@@ -29,7 +29,7 @@
 {#	</script>#}
     <script>
 		document.getElementById('status').innerHTML =
-			'<img src="'+'../../static/img/2'+'.jpg" height=320>'
+			'<img src="{{ url_for('static', filename='img/1.jpg') }}" height=320>'
 	</script>
 	<!-- <div><img src='shuaitang.jpg'></div> -->
 
@@ -67,7 +67,7 @@
     <ul class="pager">
 	    <li><a href="#">Previous</a></li>
 {#	    <li><a href="rate_people.html?id=2">Next</a></li>#}
-        <li><a href="/rate_others/2/">Next</a></li>
+        <li><a href="/result">Next</a></li>
  	</ul>
 </body>
 </html>

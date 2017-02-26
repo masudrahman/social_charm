@@ -15,3 +15,15 @@ def login():
 @app.route('/rate_others')
 def rate():
 	return render_template('rate_others.html')
+
+@app.route('/feature_list')
+def feature_list():
+	return render_template('feature_list.html')
+
+@app.route('/result')
+def result():
+	return render_template('result.html')
+
+@app.route('/invite')
+def invite():
+	return render_template('invite.html')
