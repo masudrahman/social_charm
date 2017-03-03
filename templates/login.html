@@ -27,11 +27,10 @@
 	      version    : 'v2.8'
 	    });
 	    FB.AppEvents.logPageView();
+	    FB.onlogin(function() {
+	        window.location.href = "/feature_list";
+	    });
 	  };
-
-	  FB.onlogin(function() {
-	      window.location.href = "/feature_list";
-	  });
 
 
 	  (function(d, s, id){
