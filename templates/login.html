@@ -27,6 +27,18 @@
 	      version    : 'v2.8'
 	    });
 	    FB.AppEvents.logPageView();
+
+
+	    FB.getLoginStatus(function(response) {
+	      if (response.status === 'connected') {
+	        window.location.href = "/feature_list";
+	      } 
+	      else 
+	      {
+	        initiateFBLogin();
+	      }
+	    });
+	    
 	   
 	  };
 
@@ -37,15 +49,7 @@
             });
     }
 
-	  FB.getLoginStatus(function(response) {
-      if (response.status === 'connected') {
-        window.location.href = "/feature_list";
-      } 
-      else 
-      {
-        initiateFBLogin();
-      }
-    });
+	  
 
     function initiateFBLogin()
     {
