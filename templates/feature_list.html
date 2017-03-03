@@ -47,9 +47,9 @@
 
   <div class="demo-card-wide mdl-card mdl-shadow--2dp">
     <div class="mdl-card__title mdl-card--expand">
-      <h2 class="mdl-card__title-text">Welcome</h2>
-      <h2 class="mdl-card__title-text" id="username"></h2>
-      <img src="" id="profileImage">
+      <h1 class="mdl-card__title-text">Welcome</h1>
+      <h2 class="mdl-card__title-text" style="text-align: center;" id="username"></h2>
+      <img src="" id="profileImage" style="text-align: center;">
     </div>
 
     <div class="mdl-card__supporting-text">
@@ -114,7 +114,7 @@
           console.log('Successful login for: ' + response.name);
           console.log('Successful login for: ' + response.id);
           console.log('Successful login for: ' + response.email);
-          var im = document.getElementById("profileImage").setAttribute("src", "http://graph.facebook.com/" + response.id + "/picture?type=normal");
+          var im = document.getElementById("profileImage").setAttribute("src", "https://graph.facebook.com/" + response.id + "/picture?type=normal");
           document.getElementById('username').innerHTML =response.name;
       });
   }
