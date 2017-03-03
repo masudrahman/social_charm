@@ -1,5 +1,28 @@
-<div>
+<head>
 	<h1>Mirror, mirror, who is the most charming person in the world?</h1>
 	<h1> Play a game to learn the secrets of your social charm!</h1>
+</head>
+	
+<body>
 	<a href="/login" style="font-size: 100px;">Let's start from here!</a>
-</div>
+</body>	
+
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '415713675450182',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
