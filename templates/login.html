@@ -28,9 +28,33 @@
 	    });
 	    FB.AppEvents.logPageView();
 	    FB.onlogin(function() {
-	        window.location.href = "/feature_list";
+	        
 	    });
 	  };
+
+	  function fetchUserDetail()
+    {
+        FB.api('/me', function(response) {
+                alert("Name: "+ response.name + "\nFirst name: "+ response.first_name + "ID: "+response.id);
+            });
+    }
+
+	  FB.getLoginStatus(function(response) {
+      if (response.status === 'connected') {
+        window.location.href = "/feature_list";
+      } 
+      else 
+      {
+        initiateFBLogin();
+      }
+    });
+
+    function initiateFBLogin()
+    {
+        FB.login(function(response) {
+           fetchUserDetail();
+         });
+    }
 
 
 	  (function(d, s, id){
