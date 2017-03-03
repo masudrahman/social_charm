@@ -29,6 +29,10 @@
 	    FB.AppEvents.logPageView();
 	  };
 
+	  FB.onlogin(function() {
+	      window.location.href = "/feature_list";
+	  });
+
 
 	  (function(d, s, id){
 	     var js, fjs = d.getElementsByTagName(s)[0];
