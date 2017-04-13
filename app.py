@@ -1,8 +1,16 @@
 import os
 from flask import Flask
 from flask import render_template
-
+from flaskext.mysql import MySQL
+ 
+mysql = MySQL()
 app = Flask(__name__)
+app.config['MYSQL_DATABASE_USER'] = 'root'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'root'
+app.config['MYSQL_DATABASE_DB'] = 'social_charm'
+app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+mysql.init_app(app)
+
 
 @app.route('/')
 def index():
