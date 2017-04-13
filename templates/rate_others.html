@@ -16,6 +16,20 @@
  		var imgIdx_int = Math.round(imgIdx)+1;
  		var imgIdx_next = imgIdx_int.toString()
 
+
+	 		// Here we run a very simple test of the Graph API after login is
+	  // successful.  See statusChangeCallback() for when this call is made.
+	  function testAPI() {
+	      console.log('Welcome!  Fetching your information.... ');
+	      FB.api('/me', function(response) {
+	          console.log('Successful login for: ' + response.name);
+	          console.log('Successful login for: ' + response.id);
+	          console.log('Successful login for: ' + response.email);
+	          var im = document.getElementById("profileImage").setAttribute("src", "https://graph.facebook.com/" + response.id + "/picture?type=normal");
+	          document.getElementById('username').innerHTML =response.name;
+	      });
+	  }
+
     </script>
 
 	<<div style="text-align: center;">
