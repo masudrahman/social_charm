@@ -63,7 +63,6 @@
               console.log('Successful login for: ' + response.name);
               console.log('Successful login for: ' + response.id);
               console.log('Successful login for: ' + response.email);
-              var im = document.getElementById("profileImage").setAttribute("src", "https://graph.facebook.com/" + response.id + "/picture?type=normal");
               document.getElementById('username').innerHTML =response.name;
           });
       }
@@ -83,61 +82,28 @@
        
       };
 
+      function next(){
+      	window.location.href = "/result";
+      }
+
 
     </script>
 
-	<<div style="text-align: center;">
+	<div style="text-align: center;">
 		
+
 	
-	{#	<p><font  face="tahoma" size=4 color="#3b5998"> Hello, Shuai! </font></p>#}
-	{#	<p><font  face="tahoma" size=4 color="#3b5998"> Which of these pictures is more attractive to you? </p>#}
-	    <h1 style="color:#a26be5;"> Hello, Shuai!  </h1>
-		<h2 style="color:#f28435;"> Which of these pictures is more attractive to you? </h2>
-		<div id="status"></div>
-		{#	<script>#}
-	{#		document.getElementById('status').innerHTML =#}
-	{#			'<img src="'+imgIdx+'.jpg" height=320>'#}
-	{#	</script>#}
-	    <script>
-			document.getElementById('status').innerHTML =
-				'<img src="{{ url_for('static', filename='img/1.jpg') }}" height=320>'
-		</script>
-		<!-- <div><img src='shuaitang.jpg'></div> -->
-		<br>
-		<div id="next"></div>
 
-	{#	<script>#}
-	{#		document.getElementById('next').innerHTML =#}
-	{#			'<img src="'+imgIdx+'.jpg" height=320>'#}
-	{#	</script>#}
-	    <script>
-			document.getElementById('next').innerHTML =
-				'<img src="{{ url_for('static', filename='img/1.jpg') }}" height=320>'
-		</script>
+	    <h1 style="color:#a26be5;"> Hello,</h1>
+	    <p id="username"><font  face="tahoma" size=4 color="#3b5998"></font></p>
+		<h2 style="color:#f28435;"> Which of these pictures are more attractive to you? </h2>
+
+		<img style="padding: 1em;" src="{{ url_for('static', filename='img/1.jpg') }}" onclick="next()" alt="">
+		<img style="padding: 1em;" src="{{ url_for('static', filename='img/1.jpg') }}" onclick="next()" alt="">
+		
 
 
-
-		<div class="stars">
-		  <form action="">
-		    <input class="star star-7" id="star-7" type="radio" name="star"/>
-		    <label class="star star-7" for="star-7"></label>
-		    <input class="star star-6" id="star-6" type="radio" name="star"/>
-		    <label class="star star-6" for="star-6"></label>
-		    <input class="star star-5" id="star-5" type="radio" name="star"/>
-		    <label class="star star-5" for="star-5"></label>
-		    <input class="star star-4" id="star-4" type="radio" name="star"/>
-		    <label class="star star-4" for="star-4"></label>
-		    <input class="star star-3" id="star-3" type="radio" name="star"/>
-		    <label class="star star-3" for="star-3"></label>
-		    <input class="star star-2" id="star-2" type="radio" name="star"/>
-		    <label class="star star-2" for="star-2"></label>
-		    <input class="star star-1" id="star-1" type="radio" name="star"/>
-		    <label class="star star-1" for="star-1"></label>
-		  </form>
-		</div>
-
-		<div><font face="tahoma" size=4 color="#F62"> less likely </font> <font face="tahoma" size=4 color="#3b5998">&#8660;</font> <font color="#005" face="tahoma" size=4 >more likely </div>
-		</div>
+			
 	<div id="click"></div>
 {#	<script>#}
 {#	if (imgIdx_int < 7 ) {#}
