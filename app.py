@@ -1,6 +1,8 @@
 import os
-from flask import Flask
-from flask import render_template
+from flask import Flask, render_template, request
+from flask.ext.sqlalchemy import SQLAlchemy
+
+
 #from flaskext.mysql import MySQL
  
 """mysql = MySQL()
@@ -11,6 +13,7 @@ app.config['MYSQL_DATABASE_DB'] = 'social_charm'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 mysql.init_app(app)"""
 app = Flask(__name__)
+db = SQLAlchemy(app)
 
 
 @app.route('/')
@@ -21,10 +24,15 @@ def index():
 def login():
 	return render_template('login.html')
 
-
 @app.route('/rate_others')
 def rate():
 	return render_template('rate_others.html')
+
+
+@app.route('/save_picture_value', methods=['POST'])
+def save_picture_value():
+	return render_template('rate_others.html')
+
 
 @app.route('/feature_list')
 def feature_list():
