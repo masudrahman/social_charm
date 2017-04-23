@@ -1,6 +1,6 @@
 import os
 from flask import Flask, render_template, request
-from flask.ext.sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 
 
 #from flaskext.mysql import MySQL
@@ -13,6 +13,8 @@ app.config['MYSQL_DATABASE_DB'] = 'social_charm'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 mysql.init_app(app)"""
 app = Flask(__name__)
+app.config.from_object(os.environ['APP_SETTINGS'])
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
