@@ -13,7 +13,7 @@ app.config['MYSQL_DATABASE_DB'] = 'social_charm'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 mysql.init_app(app)"""
 app = Flask(__name__)
-app.config.from_object(os.environ['APP_SETTINGS'])
+# app.config.from_object(os.environ['APP_SETTINGS'])
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -31,9 +31,9 @@ def rate():
 	return render_template('rate_others.html')
 
 
-@app.route('/save_picture_value', methods=['POST'])
-def save_picture_value():
-	return render_template('rate_others.html')
+# @app.route('/save_picture_value', methods=['POST'])
+# def save_picture_value():
+# 	return render_template('rate_others.html')
 
 
 @app.route('/feature_list')
