@@ -30,10 +30,31 @@ def login():
 def rate():
 	return render_template('rate_others.html')
 
+@app.route('/rate_others_1')
+def rate1():
+	return render_template('rate_others_1.html')
 
-# @app.route('/save_picture_value', methods=['POST'])
-# def save_picture_value():
-# 	return render_template('rate_others.html')
+@app.route('/rate_others_2')
+def rate2():
+	return render_template('rate_others_2.html')
+
+@app.route('/rate_others_3')
+def rate3():
+	return render_template('rate_others_3.html')
+
+@app.route('/rate_others_4')
+def rate4():
+	return render_template('rate_others_4.html')
+
+@app.route('/rate_others_5')
+def rate5():
+	return render_template('rate_others_5.html')
+
+
+@app.route('/save_picture_value', methods=['POST'])
+def save_picture_value():
+	picture = Picture('https://s3-us-west-1.amazonaws.com/socialcharm-assets/1.jpg')
+	return render_template('rate_others.html')
 
 
 @app.route('/feature_list')
