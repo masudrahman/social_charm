@@ -1,72 +1,95 @@
 <!DOCTYPE html>
-	<h1>Facebook Authetication</h1>
+
+	<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"> -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<div class="container">
+	      
+  	
+
+		<div class="card text-center">
+
+			<div class="page-header">
+				<h1 class="form-signin-heading">Sign in with Facebook</h1>
+			</div>
+		  
+		  <div class="card-block">
+		  	<div class="fb-login-button" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+
+		  	<br><br>
+
+		  	<a href="/rate_others_1" class="btn btn-lg btn-primary btn-block btn-center" role="button">Next</a>
+
+		  </div>  	
+
+
+    </div>
+
+	
 
 	<body>
-		<a href="/rate_others_1">Next</a>	
+
+			<div id="fb-root"></div>
+			<script>(function(d, s, id) {
+			  var js, fjs = d.getElementsByTagName(s)[0];
+			  if (d.getElementById(id)) return;
+			  js = d.createElement(s); js.id = id;
+			  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=143546002819112";
+			  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+
+			  window.fbAsyncInit = function() {
+			    FB.init({
+			      appId      : '415713675450182',
+			      xfbml      : true,
+			      version    : 'v2.8'
+			    });
+			    FB.AppEvents.logPageView();
 
 
+			    FB.getLoginStatus(function(response) {
+			      if (response.status === 'connected') {
+			        window.location.href = "/rate_others_1";
+			      } 
+			      else 
+			      {
+			        initiateFBLogin();
+			      }
+			    });
+			    
+			   
+			  };
 
-		<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>
+			  function fetchUserDetail()
+		    {
+		        FB.api('/me', function(response) {
+		                alert("Name: "+ response.name + "\nFirst name: "+ response.first_name + "ID: "+response.id);
+		            });
+		    }
+
+			  
+
+		    function initiateFBLogin()
+		    {
+		        FB.login(function(response) {
+		           fetchUserDetail();
+		         });
+		    }
+
+
+			  (function(d, s, id){
+			     var js, fjs = d.getElementsByTagName(s)[0];
+			     if (d.getElementById(id)) {return;}
+			     js = d.createElement(s); js.id = id;
+			     js.src = "//connect.facebook.net/en_US/sdk.js";
+			     fjs.parentNode.insertBefore(js, fjs);
+			   }(document, 'script', 'facebook-jssdk'));
+			</script>
 
 	</body>
-
-
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=143546002819112";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));
-
-	  window.fbAsyncInit = function() {
-	    FB.init({
-	      appId      : '415713675450182',
-	      xfbml      : true,
-	      version    : 'v2.8'
-	    });
-	    FB.AppEvents.logPageView();
-
-
-	    FB.getLoginStatus(function(response) {
-	      if (response.status === 'connected') {
-	        window.location.href = "/rate_others_1";
-	      } 
-	      else 
-	      {
-	        initiateFBLogin();
-	      }
-	    });
-	    
-	   
-	  };
-
-	  function fetchUserDetail()
-    {
-        FB.api('/me', function(response) {
-                alert("Name: "+ response.name + "\nFirst name: "+ response.first_name + "ID: "+response.id);
-            });
-    }
-
-	  
-
-    function initiateFBLogin()
-    {
-        FB.login(function(response) {
-           fetchUserDetail();
-         });
-    }
-
-
-	  (function(d, s, id){
-	     var js, fjs = d.getElementsByTagName(s)[0];
-	     if (d.getElementById(id)) {return;}
-	     js = d.createElement(s); js.id = id;
-	     js.src = "//connect.facebook.net/en_US/sdk.js";
-	     fjs.parentNode.insertBefore(js, fjs);
-	   }(document, 'script', 'facebook-jssdk'));
-	</script>
-
 
 </html>
