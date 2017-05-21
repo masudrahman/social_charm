@@ -4,11 +4,15 @@
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/ >
 		<title>Results</title>
 
+
+
 		<!-- Google fonts -->
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 
 		<!-- D3.js -->
+		<script src="http://d3js.org/d3.v3.js"></script>
+		<script src="https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
 		
 		<style>
@@ -25,7 +29,7 @@
 			.legend {
 				font-family: 'Raleway', sans-serif;
 				fill: #333333;
-			}
+			} 
 			
 			.tooltip {
 				fill: #333333;
@@ -34,6 +38,91 @@
 	
 	</head>
 	<body>
+
+			<script>
+				var id = parent.document.URL.substring(parent.document.URL.indexOf('?id='), parent.document.URL.length);
+				var imgIdx = id.split("=")[1];
+				var imgIdx_int = Math.round(imgIdx)+1;
+				var imgIdx_next = imgIdx_int.toString()
+
+
+
+
+		   </script>
+
+		   <script type="text/javascript" charset="utf-8" async defer>
+		   // This is called with the results from from FB.getLoginStatus().
+		     function statusChangeCallback(response) {
+		         console.log('statusChangeCallback');
+		         console.log(response);
+		         // The response object is returned with a status field that lets the
+		         // app know the current login status of the person.
+		         // Full docs on the response object can be found in the documentation
+		         // for FB.getLoginStatus().
+		         if (response.status === 'connected') {
+		             // Logged into your app and Facebook.
+		             testAPI();
+		         } else if (response.status === 'not_authorized') {
+		             // The person is logged into Facebook, but not your app.
+		             document.getElementById('status').innerHTML = 'Please log ' +
+		                     'into this app.';
+		         } else {
+		             // The person is not logged into Facebook, so we're not sure if
+		             // they are logged into this app or not.
+		             document.getElementById('status').innerHTML = 'Please log ' +
+		                     'into Facebook.';
+		         }
+		     }
+
+
+
+		   	(function(d, s, id) {
+		   	  var js, fjs = d.getElementsByTagName(s)[0];
+		   	  if (d.getElementById(id)) return;
+		   	  js = d.createElement(s); js.id = id;
+		   	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=143546002819112";
+		   	  fjs.parentNode.insertBefore(js, fjs);
+		   	}(document, 'script', 'facebook-jssdk'));
+
+
+		   	// Here we run a very simple test of the Graph API after login is
+		     // successful.  See statusChangeCallback() for when this call is made.
+		     function testAPI() {
+		         console.log('Welcome!  Fetching your information.... ');
+		         FB.api('/me', function(response) {
+		             console.log('Successful login for: ' + response.name);
+		             console.log('Successful login for: ' + response.id);
+		             console.log('Successful login for: ' + response.email);
+		             document.getElementById('username').innerHTML =response.name;
+		         });
+		     }
+
+
+
+		     window.fbAsyncInit = function() {
+		       FB.init({
+		         appId      : '415713675450182',
+		         xfbml      : true,
+		         version    : 'v2.8'
+		     	});
+
+		   	  FB.getLoginStatus(function(response) {
+		           statusChangeCallback(response);
+		       });
+		      
+		     };
+
+		     function next(){
+		     	window.location.href = "/rate_others_5";
+		     }
+
+
+		   </script>
+
+		<div class="container">
+			
+		
+
 
 		<div id="fb-root"></div>
 		<script>(function(d, s, id) {
@@ -44,22 +133,44 @@
 		  fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));</script>
 
-		<p><font size="10"> Wow, Masud</font></p>
+		<p><font size="10"> Wow,</font></p>
+		<p style="color:#a26be5;" id="username"></p>
 		<p><font  face="tahoma" size=10 color="#3b5998"> Here are the cornerstones of your social charm! </font></p>
-		<div class="fb-share-button" data-href="https://socialcharm.herokuapp.com" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>
-		<a href="/invite" class="btn btn-primary btn-lg " role="button">Next</a>
-		<script>
-		document.getElementById('status').innerHTML = 
-			'<img src="../../static/img/1.jpg" margin={top=50}>'
-		</script>
+		
 
-		<div class="radarChart" style="float:right"></div>
-		<script src="../../static/css/radarChart.js"></script>
+		<!-- <a href="/invite" class="btn btn-primary btn-lg " role="button">Next</a> -->
+	
+
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="radarChart"></div>
+				</div>
+				
+				
+				
+			</div>
+			
+		</div>
+		
+		
+
+
+
+		<br>
+
+		<div class="row">
+			<div class="fb-share-button" data-href="https://socialcharm.herokuapp.com" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>
+			<!-- <a href="/invite" class="btn btn-primary btn-lg " role="button">Next</a> -->
+		</div>
+
+		
+		<link rel="stylesheet" href="https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.css">
 		<script>
 			////////////////////////////////////////////////////////////// 
 			//////////////////////// Set-Up ////////////////////////////// 
 			////////////////////////////////////////////////////////////// 
-			var margin = {top: 50, right: 100, bottom: 100, left: 100},
+			var margin = {top: 100, right: 100, bottom: 100, left: 100},
 				width = Math.min(500, window.innerWidth - 10) - margin.left - margin.right,
 				height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
 					
@@ -68,11 +179,10 @@
 			////////////////////////////////////////////////////////////// 
 			var data = [
 					  [//iPhone
-						{axis:"Interesting",value:0.42},
-						{axis:"Attractive",value:0.48},
-						{axis:"Responsible",value:0.39},
-						{axis:"Intelligent",value:0.37},
-						{axis:"Friendly",value:0.42},
+						{axis:"Similarity",value:0.42},
+						{axis:"Trustworthiness",value:0.48},
+						{axis:"Attractiveness",value:0.39},
+						{axis:"Uniqueness",value:0.37},
 					  ],
 					];
 			////////////////////////////////////////////////////////////// 
@@ -91,8 +201,13 @@
 			  color: color
 			};
 			//Call function to draw the Radar chart
-			RadarChart(".radarChart", data, radarChartOptions);
+			RadarChart.draw(".radarChart", data, radarChartOptions);
 		</script>
+
+
+
+		</div>
 	</body>
+
 
 </html>
